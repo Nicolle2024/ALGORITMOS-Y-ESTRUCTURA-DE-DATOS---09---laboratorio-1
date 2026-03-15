@@ -1,0 +1,43 @@
+package lab1;
+
+public class Coordenada {
+    private double x;
+    private double y;
+    public Coordenada() {
+        this.x = 0;
+        this.y = 0;
+    }
+    public Coordenada(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+    public Coordenada(Coordenada c) {
+        this.x = c.x;
+        this.y = c.y;
+    }
+    public void setX(double x) {
+        this.x = x;
+    }
+    public void setY(double y) {
+        this.y = y;
+    }
+    public double getX() {
+        return x;
+    }
+    public double getY() {
+        return y;
+    }
+    public double distancia(Coordenada c) {
+        double dx = this.x - c.x;
+        double dy = this.y - c.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+    public static double distancia(Coordenada c1, Coordenada c2) {
+        double dx = c1.x - c2.x;
+        double dy = c1.y - c2.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+}
