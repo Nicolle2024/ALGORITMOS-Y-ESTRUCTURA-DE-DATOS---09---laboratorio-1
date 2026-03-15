@@ -1,0 +1,97 @@
+package lab1;
+public class Verificador {
+ 
+    public static boolean esSobrePos(Rectangulo r1, Rectangulo r2) {
+    	//Rectangulo 1
+        double r1Left = Math.min(r1.getEsquina1().getX(), r1.getEsquina2().getX());
+
+        double r1Right = Math.max(r1.getEsquina1().getX(), r1.getEsquina2().getX());
+
+        double r1Bottom = Math.min(r1.getEsquina1().getY(), r1.getEsquina2().getY());
+
+        double r1Top = Math.max(r1.getEsquina1().getY(), r1.getEsquina2().getY());
+        
+        //Rectangulo 2
+        double r2Left = Math.min(r2.getEsquina1().getX(), r2.getEsquina2().getX());
+
+        double r2Right = Math.max(r2.getEsquina1().getX(), r2.getEsquina2().getX());
+
+        double r2Bottom = Math.min(r2.getEsquina1().getY(), r2.getEsquina2().getY());
+
+        double r2Top = Math.max(r2.getEsquina1().getY(), r2.getEsquina2().getY());
+ 
+        //Verificacion de sobreposicion 
+        
+        if (r1Right > r2Left) {
+        	 
+            if (r1Left < r2Right) {
+         
+                if (r1Top > r2Bottom) {
+         
+                    if (r1Bottom < r2Top) {
+                        return true;
+                    }
+         
+                }
+         
+            }
+         
+        }
+         
+        return false;
+
+    }
+    
+    //Verificar si dos rectangulos estan separados
+    public static boolean esDisjunto(Rectangulo r1, Rectangulo r2) {
+    	 
+        double r1Left = Math.min(r1.getEsquina1().getX(), r1.getEsquina2().getX());
+        double r1Right = Math.max(r1.getEsquina1().getX(), r1.getEsquina2().getX());
+        double r1Bottom = Math.min(r1.getEsquina1().getY(), r1.getEsquina2().getY());
+        double r1Top = Math.max(r1.getEsquina1().getY(), r1.getEsquina2().getY());
+     
+        double r2Left = Math.min(r2.getEsquina1().getX(), r2.getEsquina2().getX());
+        double r2Right = Math.max(r2.getEsquina1().getX(), r2.getEsquina2().getX());
+        double r2Bottom = Math.min(r2.getEsquina1().getY(), r2.getEsquina2().getY());
+        double r2Top = Math.max(r2.getEsquina1().getY(), r2.getEsquina2().getY());
+     
+        if (r1Right < r2Left) {
+            return true;
+        }
+     
+        if (r1Left > r2Right) {
+            return true;
+        }
+     
+        if (r1Top < r2Bottom) {
+            return true;
+        }
+     
+        if (r1Bottom > r2Top) {
+            return true;
+        }
+     
+        return false;
+    }
+
+    
+ 
+    public static boolean esJunto(Rectangulo r1, Rectangulo r2) {
+    	 
+        if (!esSobrePos(r1, r2)) {
+     
+            if (!esDisjunto(r1, r2)) {
+     
+                return true;
+     
+            }
+     
+        }
+     
+        return false;
+    }
+
+ 
+}
+
+ 
